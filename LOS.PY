@@ -5,10 +5,6 @@ from selenium.webdriver.support.ui import Select
 import time
 
 
-# ────────────────────────────────────────────────
-#  CONFIGURATION
-# ────────────────────────────────────────────────
-
 GECKO_DRIVER_PATH = r"D:\RAJENDRAN\AUTOMATION\SELENIUM\geckodriver.exe"
 BASE_URL          = "https://uatngl.manappuram.com/los/#/login"
 
@@ -17,7 +13,7 @@ CREDENTIALS = {
     "password": "soft1234"
 }
 
-LEAD_ID_TO_SELECT = "L0100000731"           # ← change when needed
+LEAD_ID_TO_SELECT = "L0100000731"          
 
 # Timeouts (in seconds)
 SHORT_WAIT   = 2
@@ -31,7 +27,6 @@ def main():
     driver.maximize_window()
 
     try:
-        # ─── Login ────────────────────────────────────────────────────────
         print("Opening login page...")
         driver.get(BASE_URL)
         time.sleep(MEDIUM_WAIT)
@@ -49,35 +44,21 @@ def main():
         time.sleep(LONG_WAIT)
 
         print("Clicking OK on popup...")
-        driver.find_element(
-            By.XPATH,
-            "//button[contains(@class, 'ant-btn-primary')]//span[normalize-space(.)='OK']"
-        ).click()
+        driver.find_element( By.XPATH, "//button[contains(@class, 'ant-btn-primary')]//span[normalize-space(.)='OK']" ).click()
         time.sleep(MEDIUM_WAIT)
 
-        # ─── Navigate to Loan Applications ────────────────────────────────
         print("Opening 'Loan Applications' menu...")
-        driver.find_element(
-            By.XPATH,
-            "//div[contains(@class, 'nav_link')]//span[text()='Loan Applications']"
-        ).click()
+        driver.find_element(By.XPATH, "//div[contains(@class, 'nav_link')]//span[text()='Loan Applications']").click()
         time.sleep(LONG_WAIT)
 
         print("Selecting sub-menu 'Loan Application'...")
-        driver.find_element(
-            By.XPATH,
-            "//li[contains(@class, 'navsub_link')]//span[normalize-space(.)='Loan Application']"
-        ).click()
+        driver.find_element( By.XPATH,"//li[contains(@class, 'navsub_link')]//span[normalize-space(.)='Loan Application']").click()
         time.sleep(LONG_WAIT)
 
         print("Clicking '+ Create New Application'...")
-        driver.find_element(
-            By.XPATH,
-            "//button[contains(@class, 'primary-btn') and contains(., 'Create New Application')]"
-        ).click()
+        driver.find_element( By.XPATH, "//button[contains(@class, 'primary-btn') and contains(., 'Create New Application')]").click()
         time.sleep(LONG_WAIT)
 
-        # ─── Fill basic application data ──────────────────────────────────
         print("Selecting product: MSME & ALLIED")
         Select(driver.find_element(By.CSS_SELECTOR, "select[formcontrolname='productId']")) \
             .select_by_visible_text("MSME & ALLIED")
@@ -86,17 +67,11 @@ def main():
         print(f"Selecting Lead ID: {LEAD_ID_TO_SELECT}")
         driver.find_element(By.CSS_SELECTOR, "input.ant-select-selection-search-input[autocomplete='off']").click()
         time.sleep(SHORT_WAIT)
-        driver.find_element(
-            By.XPATH,
-            f"//div[contains(@class, 'ant-select-item-option-content') and contains(., '{LEAD_ID_TO_SELECT}')]"
-        ).click()
+        driver.find_element(By.XPATH, f"//div[contains(@class, 'ant-select-item-option-content') and contains(., '{LEAD_ID_TO_SELECT}')]").click()
         time.sleep(MEDIUM_WAIT)
 
         print("Clicking Confirm button...")
-        driver.find_element(
-            By.XPATH,
-            "//button[contains(@class, 'btn-success') and .//span[contains(., 'Confirm')]]"
-        ).click()
+        driver.find_element( By.XPATH, "//button[contains(@class, 'btn-success') and .//span[contains(., 'Confirm')]]").click()
         time.sleep(LONG_WAIT)
 
         print("Selecting Loan Type: LAP")
@@ -132,12 +107,8 @@ def main():
         print(f"Remarks entered ({len(remarks)} characters)")
         time.sleep(MEDIUM_WAIT)
 
-        # ─── NEW: Click Continue button ───────────────────────────────────
         print("Clicking Continue button...")
-        driver.find_element(
-            By.CSS_SELECTOR,
-            "input[type='button'][value='Continue'].btn-orange"
-        ).click()
+        driver.find_element( By.CSS_SELECTOR,"input[type='button'][value='Continue'].btn-orange").click()
 
         time.sleep(LONG_WAIT)
 
