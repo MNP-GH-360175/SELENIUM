@@ -105,7 +105,7 @@ def main():
             )
         )
         name_field.clear()
-        name_field.send_keys("Sakthi")
+        name_field.send_keys("Nikhil Sekar")
         time.sleep(SHORT_WAIT)
 
         print("Filling Mobile Numbers...")
@@ -119,11 +119,11 @@ def main():
 
         if len(mobile_fields) >= 2:
             mobile_fields[0].clear()
-            mobile_fields[0].send_keys("8883961112")
+            mobile_fields[0].send_keys("8883961114")
             time.sleep(SHORT_WAIT)
 
             mobile_fields[1].clear()
-            mobile_fields[1].send_keys("8883961112")
+            mobile_fields[1].send_keys("8883961114")
             time.sleep(SHORT_WAIT)
             print("Both Mobile 1 and Mobile 2 filled")
         elif len(mobile_fields) == 1:

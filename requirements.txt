@@ -1,0 +1,22 @@
+# config.py
+
+BASE_URL = "https://uatngl.manappuram.com/lead/#/login"
+
+# Credentials (use environment variables or secrets manager in production)
+CREDENTIALS = {
+    "sales_officer": {"username": "369343", "password": "soft1234"},
+    "sales_head": {"username": "360175", "password": "1"},  
+    "branch_manager": {"username": "431095", "password": "soft1234"}  
+}
+
+# Timeouts (seconds)
+SHORT_WAIT = 2
+MEDIUM_WAIT = 4
+LONG_WAIT = 6
+VERY_LONG_WAIT = 12
+
+# Common XPaths 
+LOGIN_BUTTON_XPATH = "//button[contains(., 'Login') and contains(@class, 'btn-warning')]"
+POPUP_OK_XPATH = "//button[contains(@class, 'ant-btn-primary')]//span[normalize-space(.)='OK']"
+CREATE_LEAD_LINK_XPATH = "//app-sidebar-nav-link-content[.//i[contains(@class, 'cil-user-plus')]]//text()[normalize-space(.)='Create Lead']/ancestor::a"
+# Add XPaths for other pages/forms here, e.g., LEAD_STATUS_DROPDOWN_XPATH = "..."
